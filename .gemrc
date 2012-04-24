@@ -1,0 +1,18 @@
+--- 
+:benchmark: false
+gemcutter_key: 8b0e1b9350f1ca6215cc0a3d50faae35
+:verbose: true
+:backtrace: false
+:update_sources: true
+:sources: 
+- http://gemcutter.org
+- http://gems.rubyforge.org/
+- http://gems.github.com
+- http://gems.github.com
+- http://gems.github.com
+:bulk_threshold: 1000
+install: --no-rdoc --no-ri
+update: --no-rdoc --no-ri
+
+custom_shebang: $env ruby_bundler_wrapper
+

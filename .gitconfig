@@ -1,0 +1,27 @@
+[user]
+	name = Kevin Rutherford
+	email = kevin@rutherford-software.com
+[github]
+	user = kevinrutherford
+	token = bcb3aca06dbe1ade4f069183b1d0627e
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = blue bold
+  frag = magenta
+  commit = yellow bold
+  old = red
+  new = green
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+[alias]
+  co = checkout
+

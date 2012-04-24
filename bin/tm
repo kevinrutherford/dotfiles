@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+SHELL=/bin/bash
+TERM=xterm-256color
+PS1='$ '
+export SHELL TERM PS1
+
+tmux -S /var/tmux/pairing new-session -d -s pairing -n bash 'bash'
+tmux -S /var/tmux/pairing set default-command /bin/bash
+tmux -S /var/tmux/pairing set default-shell /bin/bash
+tmux -S /var/tmux/pairing new-window -t pairing -n rails 'bash -c "rails server; bash"'
+
+tmux -S /var/tmux/pairing set-window-option -t pairing:0 main-pane-width 75
+tmux -S /var/tmux/pairing split-window -t pairing:0 -h
+tmux -S /var/tmux/pairing select-layout -t pairing:0 main-vertical
+
+tmux -S /var/tmux/pairing select-window -t pairing:0
+tmux -S /var/tmux/pairing -2 attach -t pairing
+
