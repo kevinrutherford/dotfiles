@@ -1,9 +1,6 @@
 [user]
 	name = Kevin Rutherford
 	email = kevin@rutherford-software.com
-[github]
-	user = kevinrutherford
-	token = bcb3aca06dbe1ade4f069183b1d0627e
 [color]
   branch = auto
   diff = auto
@@ -24,4 +21,7 @@
   untracked = red
 [alias]
   co = checkout
+  st = status
+[merge]
+  tool = vimdiff
 
