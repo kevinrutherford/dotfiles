@@ -22,6 +22,14 @@
 [alias]
   co = checkout
   st = status
+  head = !git l -1
+  h = !git head
+  hp = "!. ~/bin/git_funcs && show_git_head"
+  r = !git l -30
+  ra = !git r --all
+  l = "!. ~/bin/git_funcs && pretty_git_log"
+  la = !git l --all
+
 [merge]
   tool = vimdiff
 
