@@ -28,9 +28,13 @@
 /.gtk-bookmarks
 /.hplip/
 /.ICEauthority
+/.icedtea/
 /.install4j
 /.irb-history
 /.java/
+/.jungledisk/
+/.junglediskinstance
+/.lesshst
 /.libreoffice/
 /.local/
 /.macromedia/
@@ -59,6 +63,7 @@
 /Working/
 /workspace/
 /.Xauthority
+/.xchat2/
 /.xsession-errors
 /.xsession-errors.old
 /.zlogin
