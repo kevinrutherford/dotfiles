@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+SHELL=/bin/bash
+TERM=xterm-256color
+PS1='$ '
+export SHELL TERM PS1
+
+projname="$1"
+
+function use_node {
+  export NVM_DIR="$HOME/.nvm"
+  . $NVM_DIR/nvm.sh
+  nvm use 4
+}
+
+function toggle_max_term {
+  wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz
+}
+
+function start_session {
+  tmux new-session -d -s $1 -n bash 'bash'
+  tmux set default-command /bin/bash
+  tmux set default-shell /bin/bash
+
+  tmux split-window -v
+  tmux select-pane -t:.0
+  tmux split-window -h
+  tmux set-window-option -g mode-keys vi
+}
+
+cd ${projname} 2>/dev/null || { echo "Project '$projname' has not been configured" >& 2; exit 1; }
+use_node
+toggle_max_term
+start_session $projname
+
+[ -f .projectrc ] && { . .projectrc; }
+
+tmux -2 attach-session -t ${projname}
+

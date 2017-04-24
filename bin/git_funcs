@@ -9,8 +9,8 @@
 # author name, ensuring that we don't destroy anything in the commit message
 # that looks like time.
 #
-# The log format uses } characters between each field, and `column` is later
-# used to split on them. A } in the commit subject or any other field will
+# The log format uses @ characters between each field, and `column` is later
+# used to split on them. A @ in the commit subject or any other field will
 # break this.
 
 HASH="%C(yellow)%h%Creset"
@@ -19,7 +19,7 @@ AUTHOR="%C(blue)<%an>%Creset"
 REFS="%C(red)%d%Creset"
 SUBJECT="%s"
 
-FORMAT="$HASH}$RELATIVE_TIME}$AUTHOR}$REFS $SUBJECT"
+FORMAT="$HASH@$RELATIVE_TIME@$AUTHOR@$REFS $SUBJECT"
 
 show_git_head() {
     pretty_git_log -1
@@ -33,8 +33,8 @@ pretty_git_log() {
       # Replace (2 years, 5 months) with (2 years)
       sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
       # Add a column to show github issue numbers
-      sed -Ee 's/( *)((Closes|Fixes)? *#[[:digit:]]+)$/}[33m\2[m/' |
-      column -s '}' -t | less -FXRS
+      sed -Ee 's/( *)((Closes|Fixes)? *#[[:digit:]]+)$/@[33m\2[m/' |
+      column -s '@' -t | less -FXRS
 }
 
 
