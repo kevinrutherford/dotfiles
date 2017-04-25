@@ -1,0 +1,11 @@
+- install hplip
+- rbenv
+- nvm
+- global gems: bundler
+- gemrc
+- bin dir
+- ssh
+- chsh zsh
+- flying logic
+- vim
+
