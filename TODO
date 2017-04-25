@@ -1,4 +1,5 @@
 - install hplip
+- curl
 - rbenv
 - nvm
 - global gems: bundler

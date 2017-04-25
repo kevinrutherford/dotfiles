@@ -1,0 +1,6 @@
+[submodule "vim/vim.symlink"]
+	path = vim/vim.symlink
+	url = https://github.com/carlhuda/janus.git
+[submodule "ruby/rbenv.symlink"]
+	path = ruby/rbenv.symlink
+	url = https://github.com/rbenv/rbenv.git

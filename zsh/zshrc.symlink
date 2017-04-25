@@ -13,3 +13,5 @@ compinit
 
 PROMPT='%F{yellow}%B%1~ %(!.#.$)%f%b '
 
+eval "$(rbenv init -)"
+
