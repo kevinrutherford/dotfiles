@@ -21,7 +21,7 @@
   untracked = red
 [alias]
   co = checkout
-  st = status
+  st = status --ignore-submodules
   head = !git l -1
   h = !git head
   hp = "!. ~/bin/git_funcs && show_git_head"
