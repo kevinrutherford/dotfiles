@@ -11,6 +11,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+alias be='bundle exec'
+
 PROMPT='%F{yellow}%B%1~ %(!.#.$)%f%b '
 
 eval "$(rbenv init -)"
