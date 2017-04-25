@@ -11,5 +11,5 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PROMPT='%F{yellow}%B%(!.#.$)%f%b '
+PROMPT='%F{yellow}%B%1~ %(!.#.$)%f%b '
 
