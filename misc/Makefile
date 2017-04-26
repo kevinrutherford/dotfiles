@@ -1,6 +1,5 @@
 
-.PHONY tools
+.PHONY: tools
 
 tools:
-	sudo apt update
 
