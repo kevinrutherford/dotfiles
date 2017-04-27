@@ -5,6 +5,7 @@
 [submodule "ruby/rbenv.symlink"]
 	path = ruby/rbenv.symlink
 	url = https://github.com/rbenv/rbenv.git
-[submodule "nvm/zsh-nvm"]
-	path = nvm/zsh-nvm
+[submodule "node/zsh-nvm"]
+	path = node/zsh-nvm
 	url = https://github.com/lukechilds/zsh-nvm.git
+
