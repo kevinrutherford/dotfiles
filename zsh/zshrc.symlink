@@ -11,7 +11,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-source ~/working/git/dotfiles/nvm/zsh-nvm/zsh-nvm.plugin.zsh
+source ~/working/git/dotfiles/node/zsh-nvm/zsh-nvm.plugin.zsh
 
 alias be='bundle exec'
 
