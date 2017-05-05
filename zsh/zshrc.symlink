@@ -13,6 +13,8 @@ compinit
 
 source ~/working/git/dotfiles/node/zsh-nvm/zsh-nvm.plugin.zsh
 
+setopt rm_star_silent
+
 alias be='bundle exec'
 
 PROMPT='%F{yellow}%B%1~ %(!.#.$)%f%b '

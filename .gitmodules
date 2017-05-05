@@ -1,7 +1,7 @@
 [submodule "vim/vim.symlink"]
 	path = vim/vim.symlink
 	url = https://github.com/carlhuda/janus.git
-  ignire = dirty
+  ignore = dirty
 [submodule "ruby/rbenv.symlink"]
 	path = ruby/rbenv.symlink
 	url = https://github.com/rbenv/rbenv.git

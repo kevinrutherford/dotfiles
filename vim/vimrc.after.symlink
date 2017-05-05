@@ -1,3 +1,5 @@
 color railscasts
 colorscheme railscasts
 
+let NERDTreeShowHidden=1
+
