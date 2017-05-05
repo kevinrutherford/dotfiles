@@ -1,0 +1,3 @@
+tools:
+	gem install tmuxinator
+

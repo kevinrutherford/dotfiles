@@ -6,7 +6,7 @@ LINKS     := $(addprefix $(HOME)/., $(LINKNAMES))
 
 VPATH = $(TOPICS)
 
-.PHONY: dotfiles tools
+.PHONY: dotfiles apt tools $(TOPICS)
 
 dotfiles: $(BINDIR) $(LINKS)
 
@@ -16,8 +16,17 @@ $(BINDIR):
 $(HOME)/.%: %.symlink
 	ln -s $< $@
 
-tools:
+tools: apt ruby vim tmux
+
+ruby:
+	$(MAKE) -C ruby tools
+
+vim:
+	$(MAKE) -C vim tools
+
+tmux: ruby
+	$(MAKE) -C tmux tools
+
+apt:
 	sudo apt update
-	$(MAKE) -C ruby
-	$(MAKE) -C vim
 
