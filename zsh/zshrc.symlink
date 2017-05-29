@@ -1,8 +1,9 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
+
 bindkey -v
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/kevin/.zshrc'
@@ -10,6 +11,18 @@ zstyle :compinstall filename '/home/kevin/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
+
+bindkey '^n' down-history
+bindkey '^r' history-incremental-search-backward
+
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%F{yellow}%B NORMAL %f%b"
+  RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 source ~/working/git/dotfiles/node/zsh-nvm/zsh-nvm.plugin.zsh
 source ~/working/git/dotfiles/tmux/tmuxinator.zsh
