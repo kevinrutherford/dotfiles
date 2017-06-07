@@ -1,3 +1,5 @@
+SYMLINK   := ln -f -s
+
 TOPICS    := $(shell find . -maxdepth 1 -mindepth 1 -type d -name '[a-z]*')
 BINDIR    := $(HOME)/bin
 LINKFILES := $(shell find . -name '*.symlink')
@@ -9,12 +11,13 @@ VPATH = $(TOPICS)
 .PHONY: dotfiles apt tools $(TOPICS)
 
 dotfiles: $(BINDIR) $(LINKS)
+	$(MAKE) -C vim dotfiles
 
 $(BINDIR):
-	ln -s $(BINDIR) `pwd`/bin
+	$(SYMLINK) `pwd`/bin $@
 
 $(HOME)/.%: %.symlink
-	ln -s $< $@
+	$(SYMLINK) `pwd`/$< $@
 
 tools: apt ruby vim tmux
 
