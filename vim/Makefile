@@ -1,4 +1,6 @@
-tools:
+.PHONY: install
+
+install:
 	sudo apt install ack-grep
 
 dotfiles:

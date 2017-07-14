@@ -8,9 +8,9 @@ LINKS     := $(addprefix $(HOME)/., $(LINKNAMES))
 
 VPATH = $(TOPICS)
 
-.PHONY: dotfiles apt tools $(TOPICS)
+.PHONY: dotfiles apt install $(TOPICS)
 
-dotfiles: $(BINDIR) $(LINKS)
+dotfiles: install $(BINDIR) $(LINKS)
 	$(MAKE) -C vim dotfiles
 
 $(BINDIR):
@@ -19,17 +19,14 @@ $(BINDIR):
 $(HOME)/.%: %.symlink
 	$(SYMLINK) `pwd`/$< $@
 
-tools: apt ruby vim tmux
+install: apt ruby vim tmux
 
-ruby:
-	$(MAKE) -C ruby tools
-
-vim:
-	$(MAKE) -C vim tools
+$(TOPICS):
+	$(MAKE) -C $@ install
 
 tmux: ruby
-	$(MAKE) -C tmux tools
 
 apt:
 	sudo apt update
+	git submodule update --init --recursive
 
