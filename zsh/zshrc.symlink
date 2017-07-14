@@ -30,6 +30,7 @@ source ~/working/git/dotfiles/tmux/tmuxinator.zsh
 setopt rm_star_silent
 
 alias be='bundle exec'
+alias tmux='tmux -2'
 
 PROMPT='%F{yellow}%B%1~ %(!.#.$)%f%b '
 
