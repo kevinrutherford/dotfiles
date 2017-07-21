@@ -4,7 +4,7 @@ RUBY_BUILD_DIR := ./rbenv.symlink/plugins/ruby-build
 
 install: $(RUBY_BUILD_DIR)
 	sudo apt install -y libssl-dev libreadline-dev zlib1g-dev
-	-rbenv install 2.4.0
+	rbenv install 2.4.0 --skip-existing
 	gem install bundler
 
 $(RUBY_BUILD_DIR):
