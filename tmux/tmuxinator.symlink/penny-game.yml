@@ -1,0 +1,21 @@
+# ~/.tmuxinator/penny-game.yml
+
+name: penny-game
+root: ~/working/git/penny-game
+
+tmux_command: tmux -2
+pre_window: nvm use 6.10
+
+windows:
+  - vim:
+      root: ~/working/git/penny-game
+      panes:
+          - $EDITOR
+  - ci:
+      root: ~/working/git/penny-game
+      layout: 4d44,272x74,0,0{180x74,0,0,1,91x74,181,0,4}
+      panes:
+          - yarn run build:watch
+          - yarn run test:watch
+          -
+
