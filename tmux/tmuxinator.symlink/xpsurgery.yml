@@ -1,0 +1,16 @@
+# ~/.tmuxinator/xpsurgery.yml
+
+name: xpsurgery
+root: ~/working/git/xpsurgery
+
+tmux_command: tmux -2
+pre_window: nvm use 6.10
+
+windows:
+  - vim:
+      root: ~/working/git/xpsurgery
+      layout: c362,272x74,0,0,5
+      panes:
+          - $EDITOR
+          - make watch
+
