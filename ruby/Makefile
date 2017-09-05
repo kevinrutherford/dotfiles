@@ -1,8 +1,8 @@
 RUBY_BUILD_DIR := ./rbenv.symlink/plugins/ruby-build
 
-.PHONY: install
+.PHONY: postinstall
 
-install: $(RUBY_BUILD_DIR)
+postinstall: $(RUBY_BUILD_DIR)
 	sudo apt install -y libssl-dev libreadline-dev zlib1g-dev
 	rbenv install 2.4.0 --skip-existing
 	rbenv global 2.4.0

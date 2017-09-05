@@ -1,8 +1,6 @@
-.PHONY: install
+.PHONY: postinstall
 
-install:
+postinstall:
 	sudo apt install ack-grep
-
-dotfiles:
 	ln -f -s `pwd`/vim.symlink/janus/vim/vimrc $(HOME)/.vimrc
 

@@ -1,5 +1,5 @@
 .PHONY: install
 
-install:
+postinstall:
 	gem install tmuxinator
 
