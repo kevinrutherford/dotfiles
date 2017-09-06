@@ -17,5 +17,5 @@ windows:
       panes:
           - yarn run build:watch
           - yarn run test:watch
-          -
+          - git status
 
