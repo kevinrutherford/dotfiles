@@ -1,14 +1,12 @@
-# ~/.tmuxinator/xpsurgery.yml
+# ~/.tmuxinator/nanoc.yml
 
 name: xpsurgery
-root: ~/working/git/xpsurgery
 
 tmux_command: tmux -2
 pre_window: nvm use 6.10
 
 windows:
   - vim:
-      root: ~/working/git/xpsurgery
       layout: 8397,272x73,0,0[272x53,0,0,6,272x20,0,54,7]
       panes:
           - $EDITOR
