@@ -1,0 +1,9 @@
+#!/bin/sh
+
+SOUND_FILE=/usr/share/sounds/freedesktop/stereo/power-plug.oga
+
+message="$1"
+time="$2"
+
+echo "notify-send \"$message\"; paplay \"$SOUND_FILE\"" | at "$time"
+
