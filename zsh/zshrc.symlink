@@ -30,6 +30,7 @@ source ~/working/git/dotfiles/tmux/tmuxinator.zsh
 setopt rm_star_silent
 
 alias be='bundle exec'
+alias ding='paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga'
 alias ls='ls -F'
 alias tmux='tmux -2'
 
