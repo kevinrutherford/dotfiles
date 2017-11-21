@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "webpack --progress --config webpack-config.js",
+    "build:watch": "webpack -w --progress --config webpack-config.js",
+    "test": "NODE_ENV=test mocha --reporter dot --compilers js:babel-core/register \"src/**/*-spec.js\"",
+    "test:watch": "npm run test -- --watch --growl"
+  },
+  "license": "MIT"
+}
+

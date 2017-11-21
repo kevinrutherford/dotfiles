@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ETC="`dirname $0`/etc"
+TARGET="Makefile"
+
+echo "ETCDIR := ${ETC}" > $TARGET
+cat $ETC/js.mk >> $TARGET
+
+echo "Makefile created."
+echo "Run 'make init' to initialise your folder for Javascript work."
+
