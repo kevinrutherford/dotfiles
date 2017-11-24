@@ -1,0 +1,4 @@
+#!/bin/sh
+
+libreoffice "$*" 2>/dev/null &
+
