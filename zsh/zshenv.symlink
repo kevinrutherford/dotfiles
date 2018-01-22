@@ -1,4 +1,4 @@
 export KEYTIMEOUT=1
 export EDITOR=/usr/bin/vim
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH=".:$HOME/.local/bin:$HOME/.rbenv/bin:$PATH"
 
