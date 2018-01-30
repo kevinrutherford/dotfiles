@@ -12,6 +12,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+setopt histignoredups
+setopt histexpiredupsfirst
 bindkey '^n' down-history
 bindkey '^r' history-incremental-search-backward
 
