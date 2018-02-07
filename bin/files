@@ -1,0 +1,2 @@
+find * -type f | grep -v node_modules
+
