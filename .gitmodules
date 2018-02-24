@@ -9,3 +9,6 @@
 	path = node/zsh-nvm
 	url = https://github.com/lukechilds/zsh-nvm.git
 
+[submodule "bin/adr"]
+	path = bin/adr
+	url = git@github.com:npryce/adr-tools.git
