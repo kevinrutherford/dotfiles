@@ -1,5 +1,7 @@
 #!/bin/sh
 
+[ $# -eq 2 ] || { echo "Usage: $0 message time" >&2; exit 1; }
+
 SOUND_FILE=/usr/share/sounds/freedesktop/stereo/power-plug.oga
 
 message="$1"
