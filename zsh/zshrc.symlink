@@ -33,7 +33,7 @@ setopt rm_star_silent
 
 alias be='bundle exec'
 alias ding='paplay /usr/share/sounds/freedesktop/stereo/message-new-instant.oga'
-alias ls='ls -F'
+alias l='ls -1F'
 alias tmux='tmux -2'
 
 PROMPT='%F{yellow}%B%1~ %(!.#.$)%f%b '
