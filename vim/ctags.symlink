@@ -1,6 +1,7 @@
 --recurse=yes
 --tag-relative=yes
 --exclude=bundle.js
+--exclude=coverage
 --exclude=.git
 --exclude=node_modules
 
