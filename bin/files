@@ -1,2 +1,2 @@
-find * -type f | grep -v node_modules | grep -v coverage | grep -v bundle.js | grep -v '^tags$'
+find * -type f | grep -v node_modules | grep -v static | grep -v coverage | grep -v bundle.js | grep -v '^tags$'
 
