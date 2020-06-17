@@ -1,0 +1,207 @@
+set term=xterm-256color
+set t_Co=256
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+set background=dark
+color railscasts
+colorscheme railscasts
+
+let mapleader=","
+
+call plug#begin('~/.vim/plugged')
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
+Plug 'janko/vim-test'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'leafgarland/typescript-vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
+" - - - key bindings - - -
+
+map <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+
+" - - - configuration - - -
+
+set autowrite
+set number
+set ruler             " Show line and column number
+syntax enable         " Turn on syntax highlighting allowing local overrides
+set nowrap                        " don't wrap lines
+set tabstop=2                     " a tab is two spaces
+set shiftwidth=2                  " an autoindent (with <<) is two spaces
+set expandtab                     " use spaces, not tabs
+set list                          " Show invisible characters
+set backspace=indent,eol,start    " backspace through everything in insert mode
+set backupdir^=~/.vim/_backup//    " where to put backup files.
+set directory^=~/.vim/_temp//      " where to put swap files.
+set listchars=tab:\⇥\ ,trail:·,extends:>,precedes:<,nbsp:+
+
+set laststatus=2  " always show the status bar
+set statusline=%f\ %m\ %r\ Line:\ %l\ /\ %L\ Col:\ %v\ Buf:\ #%n
+
+""
+"" Searching
+""
+set hlsearch    " highlight matches
+set incsearch   " incremental searching
+set ignorecase  " searches are case insensitive...
+set smartcase   " ... unless they contain at least one capital letter
+
+let g:vim_json_syntax_conceal = 0
+
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
+map <leader>/ <plug>NERDCommenterToggle<CR>
+
+" open NERDtree on startup
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+""
+"" Fugitive
+""
+nmap <leader>gs :Gstatus<CR>
+nmap <leader>gd :Gdiff<CR>
+nmap <leader>gl :Glog<CR>
+nmap <leader>gc :Gcommit<CR>
+nmap <leader>gp :Git push<CR>
+nmap <leader>gf :Dispatch! git pull<CR>
+
+let g:ctrlp_map = ''
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|bower_components|node_modules',
+  \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
+  \ }
+
+""
+"" CtrlP
+""
+let g:ctrlp_map = ''
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|bower_components|node_modules',
+  \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
+  \ }
+nmap <C-p> :CtrlP<cr>
+
+""
+"" vim-test
+""
+nmap <silent> tn :TestNearest<CR>
+nmap <silent> tf :TestFile<CR>
+nmap <silent> ts :TestSuite<CR>
+nmap <silent> tl :TestLast<CR>
+nmap <silent> tg :TestVisit<CR>
+
+let test#strategy = "dispatch"
+let g:dispatch_compilers = {}
+let g:dispatch_compilers['node_modules/.bin/'] = ''
+let g:dispatch_compilers['jest'] = 'jest'
+let g:test#javascript#jest#options = '--reporters=jest-vim-reporter'
+
+""
+"" Coc
+""
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+set statusline^=%{coc#status()}\ %{get(b:,'coc_current_function','')}\ 
+
+""
+"" Enable per-project .vimrc files
+""
+set exrc
+set secure
+
+set signcolumn=yes
+set foldmethod=indent
+
+highlight Pmenu ctermbg=245
+highlight PmenuSel ctermfg=255
+highlight! link SignColumn LineNr
+highlight Search term=reverse cterm=NONE ctermbg=225 ctermfg=0
+
