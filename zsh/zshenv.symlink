@@ -1,4 +1,6 @@
 export KEYTIMEOUT=1
 export EDITOR=/usr/bin/vim
+export LEDGER_FILE=$HOME/Dropbox/accounts/hledger/current.journal
+
 export PATH=".:$HOME/.local/bin:$HOME/bin/adr/src:$HOME/.rbenv/bin:$PATH"
 

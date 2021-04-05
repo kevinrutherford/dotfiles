@@ -27,6 +27,7 @@ map <leader>n :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 
 " - - - configuration - - -
 
+set autoindent
 set autowrite
 set number
 set ruler             " Show line and column number
@@ -76,18 +77,14 @@ nmap <leader>gc :Gcommit<CR>
 nmap <leader>gp :Git push<CR>
 nmap <leader>gf :Dispatch! git pull<CR>
 
-let g:ctrlp_map = ''
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|bower_components|node_modules',
-  \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
-  \ }
+nmap <leader>ff :Ggrep <cword><cr>
 
 ""
 "" CtrlP
 ""
 let g:ctrlp_map = ''
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|bower_components|node_modules',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|bower_components|node_modules|build',
   \ 'file': '\.pyc$\|\.pyo$\|\.rbc$|\.rbo$\|\.class$\|\.o$\|\~$\',
   \ }
 nmap <C-p> :CtrlP<cr>
@@ -147,6 +144,17 @@ else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -200,8 +208,8 @@ set secure
 set signcolumn=yes
 set foldmethod=indent
 
-highlight Pmenu ctermbg=245
-highlight PmenuSel ctermfg=255
+highlight Pmenu ctermbg=231
+highlight PmenuSel ctermfg=221
 highlight! link SignColumn LineNr
 highlight Search term=reverse cterm=NONE ctermbg=225 ctermfg=0
 
