@@ -2,5 +2,8 @@ export KEYTIMEOUT=1
 export EDITOR=/usr/bin/vim
 export LEDGER_FILE=$HOME/Dropbox/accounts/hledger/current.journal
 
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
+
 export PATH=".:$HOME/.local/bin:$HOME/bin/adr/src:$HOME/.rbenv/bin:$PATH"
 
